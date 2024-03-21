@@ -3,9 +3,12 @@ from pickle_store_wrapper_Rakeki.storage import storable
 @storable(location='/home/rakeki/Dev/PyPackages/Storage/tests/cache')
 class Test:
     def __init__(self, x, y, z):
-        self.x = x
-        self.y = y
-        self.z = z
+        if not hasattr(self, 'x'):
+            self.x = x
+        if not hasattr(self, 'y'):
+            self.y = y
+        if not hasattr(self, 'z'):
+            self.z = z
     
     def set_x(self, x):
         self.x = x

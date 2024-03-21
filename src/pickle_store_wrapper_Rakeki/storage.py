@@ -28,7 +28,9 @@ def storable(location=None):
                 pickle_files = get_pickle_files_in_path(location)
                 for file in pickle_files:
                     file_name = os.path.basename(file).split('set_')[-1].split('.pkl')[0]
-                    setattr(self, file_name, self.unpack_pickle(file))
+                    file_content = self.unpack_pickle(file)
+                    print(f'{file_name}: {file_content}')
+                    setattr(self, file_name, file_content)
                 super().__init__(*args, **kwargs)
             
             def unpack_pickle(self, file):
